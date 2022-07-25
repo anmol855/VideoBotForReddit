@@ -1,0 +1,353 @@
+{% load static %}
+<!DOCTYPE html>
+<html>
+<head>
+  <title>home</title>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.1/dist/css/bootstrap.min.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/css/bootstrap.min.css" integrity="sha384-TX8t27EcRE3e/ihU7zmQxVncDAy5uIKz4rEkgIXeMed4M0jlfIDPvg6uqKI2xXr2" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" integrity="sha384-wvfXpqpZZVQGK6TAh5PVlGOfQNHSoD2xbE+QkPxCAFlNEevoEH3Sl0sibVcOQVnN" crossorigin="anonymous">
+  <script src="https://cdn.jsdelivr.net/npm/jquery@3.6.0/dist/jquery.slim.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.1/dist/js/bootstrap.bundle.min.js"></script>
+  <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.8.2/jquery.min.js">
+  </script>
+  <script src="jquery.timeago.js" type="text/javascript"></script>
+</head>
+<style>
+  *{
+    margin:0;
+    padding:0;
+    box-sizing: border-box;
+  }
+  span{
+    display: inline-block;
+    text-decoration: none;
+    color: inherit;
+  }
+  .section-head{
+    margin-bottom: 40px;
+  }
+  .section-head h4{
+    position: relative;
+    padding: 0;
+    color:#f91942;
+    line-height: 1;
+    letter-spacing: 0.3px;
+    font-size:34px;
+    font-weight:700;
+    text-align: center;
+    text-transform: none;
+    margin-bottom: 30px;
+  }
+  .section-head h4::before{
+    content:'';
+    width:60px;
+    height:3px;
+    background:#f91942;
+    position:absolute;
+    bottom:-10px;
+    left:0;
+    right:0;
+    margin:0 auto;
+  }
+  .section-head h4 span{
+    font-weight: 700;
+    padding-bottom: 5px;
+    color:#2f2f2f;
+  } 
+  .section-head p{
+    color:#818181;
+    font-size: 16px;
+    line-height: 28px;
+    text-align: center;
+  }
+  .item{
+    background:#fff;
+    text-align: center;
+    padding:30px 25px;
+    box-shadow: 0 0 25px rgba(0,0,0,0.07);
+    border-radius: 20px;
+    margin-bottom: 30px;
+    border:5px solid rgba(0,0,0,0.07);
+    -webkit-transition:all 0.5s ease 0s;
+    transition:all 0.5s ease 0s;
+  }
+  .item:hover{
+    background:#5c5755;
+    box-shadow: 0 8px 20px 0 rgba(0,0,0,0.2);
+    -webkit-transition:all 0.5s ease 0s;
+    transition:all 0.5s ease 0s;
+  }
+  .item:hover .item,
+  .item:hover span.icon{
+    background:#fff;
+    border-radius: 10px;
+    -webkit-transition:all 0.5s ease 0s;
+    transition:all 0.5s ease 0s;
+  }
+  .item:hover h6,
+  .item:hover p{
+    color:#fff;
+    -webkit-transition:all 0.5s ease 0s;
+    transition:all 0.5s ease 0s;
+  }
+  .item .icon{
+    font-size:40px;
+    margin-bottom: 25px;
+    color:#f91942;
+    width:90px;
+    height:90px;
+    line-height: 96px;
+    border-radius: 50px;
+  }
+  .item .feature_box_col_one{
+    background:rgba(247,198,5,0.2);
+    color:#f91942;
+  }
+  .item .feature_box_col_two{
+    background: rgba(255, 77, 28, 0.15);
+    color:#f91942;
+  }
+  .item .feature_box_col_three{
+    background:rgba(0,147,38,0.15);
+    color:#f91942;
+  }
+  .item .feature_box_col_four{
+    background:rgba(0,108,255,0.15);
+    color:#f91942;
+  }
+  .item .feature_box_col_five{
+    background:rgba(146,39,255,0.15);
+    color:#f91942;
+  }
+  .item .feature_box_col_six{
+    background:rgba(23,39,246,0.15);
+    color:#f91942;
+  }
+  .item p{
+    font-size: 15px;
+    line-height: 26px;
+  }
+  .item h6{
+    margin-bottom: 20px;
+    color:#2f2f2f;
+  }
+  
+    
+</style>
+<body style="text-align: center;">
+  <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+    <a class="navbar-brand" href="{% url 'landingpage' %}"><h5 style="margin-top:4px"><span style="color:red;">Reddit</span>Video</h5></style></a>
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarNavDropdown">
+      <ul class="navbar-nav">
+        <li class="nav-item active">
+          <a class="nav-link" href="{% url 'videos' %}">Library</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="{% url 'processedvideo' %}">GeneratedVideo</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="{% url 'home' %}">OurServices</a>
+        </li>
+      </ul>
+
+      <ul class="nav navbar-nav ml-auto">
+        <li>
+          <div class="icon1" id="bell"> 
+            {% if count %}
+            <i class="fa fa-bell" style='color: white'></i> </div><span class="pending">{{count}}</span>
+            {% else %}
+            <i class="fa fa-bell" style='color: white'></i> </div>
+            
+            {% endif %}
+          <div class="notifications" id="box">
+              <h2>Notifications - <span>{{count}}</span></h2>
+              <div class="notifications-item">
+                {% if name_file %}
+                <div class="text">
+                  <a href="{% url 'processedvideo' %}" onclick="ClearFields();"><h4>{{notfile}}</h4></a>
+                </div>
+              {% endif%}
+              </div>
+          </div>
+        </li>
+        <br>
+        <li class="nav-item dropdown ">
+          <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+            {{username}}
+          </a>
+          <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
+            <a class="dropdown-item" href={% url 'profile' %}><i class="fa fa-address-book" aria-hidden="true">&nbsp;&nbsp;</i>Profile</a>
+            <hr>
+            <a class="dropdown-item" href={% url 'signin' %}><i class="fa fa-sign-out" aria-hidden="true">&nbsp;&nbsp;</i>Logout</a>
+          </div>
+        </li>
+      </ul>
+      <ul class="nav navbar-nav navbar-right">
+        <li class="nav-item active">
+          <a href={% url 'signin' %}><i class="fa fa-power-off" aria-hidden="false"></i></a>
+        </li>
+
+      </ul>
+      
+    </div>
+  </nav>
+  <div class="pt-5 pb-5">
+    <div class="container">
+      <div class="row">
+        <div class="section-head col-sm-12">
+          <h4>Our Services</h4>
+
+        </div>
+        <div class="col-lg-4 col-sm-6">
+          <a href="{% url 'voices' %}" style="text-decoration: none;color: inherit;">
+          <div class="item"><span class="icon feature_box_col_one"><i class="fa fa-youtube-play"></i></span>
+            <h6> Custom-Made Videos</h6>
+            <p>Customise Your Video Specifications and Generate </p>
+          </div>
+        </a>
+        </div>
+        <div class="col-lg-4 col-sm-6">
+          <a href="{% url 'subredditvoices' %}" style="text-decoration: none;color: inherit;">
+          <div class="item"> <span class="icon feature_box_col_two"><i class="fa fa-video-camera"></i></span>
+            <h6>SubReddit Specific Videos</h6>
+            <p>Generate Hot/Top/New Thread Videos from Specific SubReddit </p>
+          </div>
+        </a>
+        </div>
+        <div class="col-lg-4 col-sm-6">
+          <a href="{% url 'videos' %}" style="text-decoration: none;color: inherit;">
+          <div class="item"> <span class="icon feature_box_col_three"><i class="fa fa-hourglass-half"></i></span>
+            <h6>Collection</h6>
+            <p>Take a look at Processed Videos and Download it Anytime</p>
+          </div>
+        </a>
+        </div>
+        <div class="col-lg-4 col-sm-6">
+          <a href="{% url 'videosgen' %}" style="text-decoration: none;color: inherit;">
+          <div class="item"> <span class="icon feature_box_col_four"><i class="fa fa-play"></i></span>
+            <h6>Video Generation</h6>
+            <p>Generate Videos from Auto-Saved Specifications</p>
+          </div>
+        </a>
+        </div>
+        <div class="col-lg-4 col-sm-6">
+          <a href="{% url 'availtracks' %}" style="text-decoration: none;color: inherit;">
+          <div class="item"> <span class="icon feature_box_col_four"><i class="fa fa-database"></i></span>
+            <h6>Sound Library</h6>
+            <p>Browse through different voices that would fit perfect as per your video</p>
+          </div>
+        </a>
+        </div>
+      </div>
+    </div>
+</div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  <style>
+    body {
+      background-image: url('{% static 'backimg.jpg'%}');
+      background-repeat: no-repeat;
+      background-attachment: fixed;  
+      background-size: cover;
+    }
+    .hide {
+      display: none;
+    }
+        
+    .myDIV:hover + .hide {
+      display: block;
+      color: gold;
+    }
+    .icon1{padding: 10px;color: #000000;vertical-align: left;margin-left:15px;margin-top: -1px}
+    .icon1 img{display: inline-block;width: 17px;margin-top: 12px}.icon1:hover{opacity: .7}
+    .notifications{width: 300px;height: 0px;opacity: 0;position: absolute;top: 63px;right: 62px;border-radius: 5px 0px 5px 5px;background-color: #fff;box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19)}
+    .notifications h2{font-size: 14px;padding: 10px;border-bottom: 1px solid #eee;color: #999}
+    .notifications h2 span{color: #f00}
+    .notifications-item{display: flex;border-bottom: 1px solid #eee;padding: 6px 9px;margin-bottom: 0px;cursor: pointer}
+    .notifications-item:hover{background-color: #eee}
+    .notifications-item img{display: block;width: 50px;height: 50px;margin-right: 9px;border-radius: 50%;margin-top: 2px}
+    .notifications-item .text h4{color: #777;font-size: 16px;margin-top: 3px}
+    .notifications-item .text p{color: #aaa;font-size: 12px} 
+
+    .pending{
+      position:absolute;
+      border-radius:50%;
+      font-size:13px;
+      width:18px;
+      height:18px;
+      justify-content:center;
+      margin-top:-41px;
+      margin-left:4px;
+      background-color:#ff0000;
+      color:#FFFFFF
+    }
+</style>
+<br>
+<br>
+
+
+
+<script>
+  function func () {
+    alert("Hello")
+}
+</script>
+<script>
+  $(document).ready(function(){
+            
+            
+            
+        
+    var down = false;
+    
+    $('#bell').click(function(e){
+      
+        var color = $(this).text();
+        if(down){
+            
+            $('#box').css('height','0px');
+            $('#box').css('opacity','0');
+            down = false;
+        }else{
+            
+            $('#box').css('height','auto');
+            $('#box').css('opacity','1');
+            down = true;
+            
+        }
+        
+    });
+        
+        });
+</script>
+<script>
+  $(document).ready(function() {
+    jQuery.timeago.settings.allowFuture = true;
+    var now= new Date();
+    $(".timeago").timeago();
+    $(".page-opened").text( $.timeago(now));
+    $("time").timeago();
+    //$("some-future-date") $.timeago(new Date(999999999999));
+});
+</script>
+</body>
+</html>

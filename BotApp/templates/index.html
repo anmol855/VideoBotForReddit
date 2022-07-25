@@ -1,0 +1,276 @@
+{% load static %}
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Index</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.1/dist/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <script src="https://cdn.jsdelivr.net/npm/jquery@3.6.0/dist/jquery.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.1/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.8.2/jquery.min.js">
+    </script>
+    <script src="jquery.timeago.js" type="text/javascript"></script>
+  </head>
+<style>
+  
+  *{
+      margin:0;
+      padding:0;
+      box-sizing: border-box;
+  }
+  
+  /* Variables */
+  :root{
+      --primary-font-family: 'Poppins', sans-serif;
+      --light-white:#f5f8fa;
+      --gray:#5e6278;
+      --gray-1:#e3e3e3;
+  }
+  
+  /* Main CSS */ 
+  .wrapper{
+      padding:0 0 0px;
+      background-image:url("images/bg.png");
+      background-position: center;
+      background-repeat: no-repeat;
+      background-size: contain;
+      background-attachment: fixed;
+      min-height: 50%;
+  }
+  .wrapper input{
+      background-color:var(--light-white);
+      border-color:var(--light-white);
+      color:var(--gray);
+  }
+  .wrapper input:focus{
+      box-shadow: none;
+  }
+  .wrapper .password-info{
+      font-size:10px;
+  }
+  .wrapper .submit_btn{
+      padding:10px 15px;
+      font-weight:500;
+  }
+  .wrapper .login_with{
+      padding:8px 15px;
+      font-size:13px;
+      font-weight: 500;
+      transition:0.3s ease-in-out;
+  }
+  .wrapper .submit_btn:focus,
+  .wrapper .login_with:focus{
+      box-shadow: none;
+  }
+  .wrapper .login_with:hover{
+      background-color:var(--gray-1);
+      border-color:var(--gray-1);
+  }             
+  
+</style>
+<body style="text-align: center;">
+  <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+    <a class="navbar-brand" href="{% url 'landingpage' %}"><h5 style="margin-top:4px"><span style="color:red;">Reddit</span>Video</h5></style></a>
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarNavDropdown">
+      <ul class="navbar-nav">
+        <li class="nav-item active">
+          <a class="nav-link" href="{% url 'videos' %}">Library</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="{% url 'processedvideo' %}">GeneratedVideo</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="{% url 'home' %}">OurServices</a>
+        </li>
+      </ul>
+
+      <ul class="nav navbar-nav ml-auto">
+        <li>
+          <div class="icon" id="bell"> 
+            {% if count %}
+            <i class="fa fa-bell" style='color: white'></i> </div><span class="pending">{{count}}</span>
+            {% else %}
+            <i class="fa fa-bell" style='color: white'></i> </div>
+            
+            {% endif %}
+          <div class="notifications" id="box">
+              <h2>Notifications - <span>{{count}}</span></h2>
+              <div class="notifications-item">
+                {% if name_file %}
+                  <div class="text">
+                    <a href="{% url 'processedvideo' %}" onclick="ClearFields();"><h4>{{notfile}}</h4></a>
+                  </div>
+                {% endif%}
+              </div>
+          </div>
+        </li>
+        <br>
+        <li class="nav-item dropdown ">
+          <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+            {{username}}
+          </a>
+          <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
+            <a class="dropdown-item" href={% url 'profile' %}><i class="fa fa-address-book" aria-hidden="true">&nbsp;&nbsp;</i>Profile</a>
+            <hr>
+            <a class="dropdown-item" href={% url 'signin' %}><i class="fa fa-sign-out" aria-hidden="true">&nbsp;&nbsp;</i>Logout</a>
+          </div>
+        </li>
+      </ul>
+      <ul class="nav navbar-nav navbar-right">
+        <li class="nav-item active">
+          <a href={% url 'signin' %}><i class="fa fa-power-off" aria-hidden="false"></i></a>
+        </li>
+
+      </ul>
+      
+    </div>
+  </nav>
+
+  <style>
+    body {
+      background-image: url('{% static 'backimg.jpg'%}');
+      background-repeat: no-repeat;
+      background-attachment: fixed;  
+      background-size: cover;
+    }
+    .hide {
+      display: none;
+    }
+        
+    .myDIV:hover + .hide {
+      display: block;
+      color: gold;
+    }
+    .icon{padding: 10px;color: #000000;vertical-align: left;margin-left:15px;margin-top: -1px}
+    .icon img{display: inline-block;width: 17px;margin-top: 12px}.icon:hover{opacity: .7}
+    .notifications{width: 300px;height: 0px;opacity: 0;position: absolute;top: 63px;right: 62px;border-radius: 5px 0px 5px 5px;background-color: #fff;box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19)}
+    .notifications h2{font-size: 14px;padding: 10px;border-bottom: 1px solid #eee;color: #999}
+    .notifications h2 span{color: #f00}
+    .notifications-item{display: flex;border-bottom: 1px solid #eee;padding: 6px 9px;margin-bottom: 0px;cursor: pointer}
+    .notifications-item:hover{background-color: #eee}
+    .notifications-item img{display: block;width: 50px;height: 50px;margin-right: 9px;border-radius: 50%;margin-top: 2px}
+    .notifications-item .text h4{color: #777;font-size: 16px;margin-top: 3px}
+    .notifications-item .text p{color: #aaa;font-size: 12px} 
+
+    .pending{
+      position:absolute;
+      border-radius:50%;
+      font-size:13px;
+      width:18px;
+      height:18px;
+      justify-content:center;
+      margin-top:-41px;
+      margin-left:4px;
+      background-color:#ff0000;
+      color:#FFFFFF
+    }
+    
+
+</style>
+  <br>
+
+
+{% if submitted %}
+		Your Event Was Submitted Succefully!!!
+
+{% else %}
+<!-- 
+<div class="row justify-content-center" >
+<div class="col-md-7 jobs_index_middle_panels">
+<div class="card text-center" >
+  <div class="card-header">
+    <h1>Select Video Specifications</h1>
+  </div>
+  <br>
+  
+  <div class="col-sm-12">
+		<form class="form-floating" align="left" action="" method=POST >
+			{% csrf_token %}
+			{{ form.as_p }}
+      
+      <div class="card-footer text-muted">
+        <div class="col-md-12 text-center">
+			<input type="submit" value="Submit"  class="btn btn-secondary" ahref="{% url 'download' %}" onclick="myFunction()">
+    </div>
+  </div>
+		</form>
+  </div>
+</div>
+</div>
+</div>
+-->
+<section class="wrapper">
+  <div class="container">
+    <div class="col-sm-8 offset-sm-2 col-lg-6 offset-lg-6 col-xl-8 offset-xl-2 text-center">
+      <form class="rounded bg-white shadow p-4" action="" method=POST align="left">
+        {% csrf_token %}
+        <h2 class="text-dark fw-bolder fs-2" align="center">Video Specifications</h2><hr style="height:2px;border-width:0;color:#90ee90;background-color:#90ee90">
+                  <div class="form-floating mb-2">
+                      <strong>
+                      {{form.as_p}}
+                      </strong>
+                
+                  </div>
+                  <hr style="height:2px;border-width:0;color:#90ee90;background-color:#90ee90">          
+        <button type="submit" class="btn btn-success submit_btn w-100 my-3">Submit</button> 
+      </form>
+    </div>
+  </div>
+</section>
+{% endif %}
+
+<br/><br/>
+<script>
+  function myFunction() {
+    document.getElementById("myForm").reset();
+  }
+  </script>	
+
+
+  <script>
+    $(document).ready(function(){
+              
+              
+              
+          
+      var down = false;
+      
+      $('#bell').click(function(e){
+        
+          var color = $(this).text();
+          if(down){
+              
+              $('#box').css('height','0px');
+              $('#box').css('opacity','0');
+              down = false;
+          }else{
+              
+              $('#box').css('height','auto');
+              $('#box').css('opacity','1');
+              down = true;
+              
+          }
+          
+      });
+          
+          });
+  </script>
+  <script>
+    $(document).ready(function() {
+      jQuery.timeago.settings.allowFuture = true;
+      var now= new Date();
+      $(".timeago").timeago();
+      $(".page-opened").text( $.timeago(now));
+      $("time").timeago();
+      //$("some-future-date") $.timeago(new Date(999999999999));
+  });
+  </script>
+</body>
+
+</html>

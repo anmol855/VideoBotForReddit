@@ -1,0 +1,132 @@
+{% load static %}
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Current Profile</title>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.1/dist/css/bootstrap.min.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+  
+  <script src="https://cdn.jsdelivr.net/npm/jquery@3.6.0/dist/jquery.slim.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.1/dist/js/bootstrap.bundle.min.js"></script>
+  
+</head>
+<body style="text-align: center;">
+
+  <style>
+    body {
+      background-image: url('{% static 'backimg.jpg'%}');
+      background-repeat: no-repeat;
+      background-attachment: fixed;  
+      background-size: cover;
+    }
+    .navbar-global {
+        background-color: indigo;
+      }
+      
+      .navbar-global .navbar-brand {
+        color: white;
+      }
+      
+      .navbar-global .navbar-user > li > a
+      {
+        color: white;
+      }
+    .navbar-primary {
+        background-color: #333;
+        bottom: 0px;
+        left: 0px;
+        position: absolute;
+        top: 57px;
+        width: 200px;
+        z-index: 8;
+        overflow: hidden;
+        -webkit-transition: all 0.1s ease-in-out;
+        -moz-transition: all 0.1s ease-in-out;
+        transition: all 0.1s ease-in-out;
+      }
+      
+      .navbar-primary.collapsed {
+        width: 60px;
+      }
+      
+      .navbar-primary.collapsed .glyphicon {
+        font-size: 22px;
+      }
+      
+      .navbar-primary.collapsed .nav-label {
+        display: none;
+      }
+      .btn-expand-collapse {
+        position: absolute;
+        display: block;
+        left: 0px;
+        bottom:0;
+        width: 100%;
+        padding: 8px 0;
+        border-top:solid 1px #666;
+        color: grey;
+        font-size: 20px;
+        text-align: center;
+    }
+    
+    .btn-expand-collapse:hover,
+    .btn-expand-collapse:focus {
+        background-color: #222;
+        color: white;
+    }
+    
+    .btn-expand-collapse:active {
+        background-color: #111;
+    }
+    
+    .navbar-primary-menu,
+    .navbar-primary-menu li {
+      margin:0; padding:0;
+      list-style: none;
+    }
+    
+    .navbar-primary-menu li a {
+      display: block;
+      padding: 10px 18px;
+      text-align: left;
+      border-bottom:solid 1px #444;
+      color: #ccc;
+    }
+    
+    .navbar-primary-menu li a:hover {
+      background-color: #000;
+      text-decoration: #0000FF;
+      color: white;
+    }
+    
+    .navbar-primary-menu li a .glyphicon {
+      margin-right: 6px;
+    }
+    
+    .navbar-primary-menu li a:hover .glyphicon {
+      color: orchid;
+    }
+    
+    .main-content {
+      margin-top: 60px;
+      margin-left: 200px;
+      padding: 20px;
+    }
+    
+    .collapsed + .main-content {
+      margin-left: 60px;
+    }
+</style>
+<br>
+<br> 
+	<script>
+        $('.btn-expand-collapse').click(function(e) {
+            $('.navbar-primary').toggleClass('collapsed');
+});
+    </script>
+</body>
+</html>
