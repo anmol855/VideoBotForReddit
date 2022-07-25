@@ -14,7 +14,7 @@ How to Run?
 4)Visit the Reddit Apps page., and set up an app .(For ClientID and ClientSecret Key)
 
 
-5)Navigate to Project Directory(BotMaker)
+5)Navigate to Project Directory
 
 6)run:python manage.py runserver
 
